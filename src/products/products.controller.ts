@@ -9,7 +9,7 @@ import {
   UseGuards,
   Query,
 } from '@nestjs/common';
-import { ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { ApiHeader, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { ProductsService } from './products.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
@@ -22,6 +22,11 @@ export class ProductsController {
   // admin routes
   @Post()
   @UseGuards(RoleGuard)
+  @ApiHeader({
+    name: 'role',
+    description: 'role must be admin',
+    required: true,
+  })
   @ApiOperation({ summary: 'Create a new product' })
   @ApiResponse({
     status: 201,
@@ -65,6 +70,11 @@ export class ProductsController {
   }
 
   // admin routes
+  @ApiHeader({
+    name: 'role',
+    description: 'role must be admin',
+    required: true,
+  })
   @ApiOperation({ summary: 'Update a product' })
   @ApiResponse({
     status: 200,
@@ -87,6 +97,11 @@ export class ProductsController {
   // admin routes
   @Delete(':id')
   @UseGuards(RoleGuard)
+  @ApiHeader({
+    name: 'role',
+    description: 'role must be admin',
+    required: true,
+  })
   @ApiOperation({ summary: 'Delete a product' })
   @ApiResponse({
     status: 200,

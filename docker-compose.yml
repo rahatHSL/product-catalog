@@ -1,13 +1,21 @@
 services:
+  product:
+    build: .
+    container_name: product
+    restart: always
+    command: npm run start
+    ports:
+      - '${SERVER_PORT}:${SERVER_PORT}'
+
   product-db:
     image: postgres
     container_name: product-db
     restart: unless-stopped
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
     ports:
-      - '5444:5432'
+      - '${DB_PORT}:5432'
     volumes:
       - postgres-data:/var/lib/postgresql/data
 volumes:

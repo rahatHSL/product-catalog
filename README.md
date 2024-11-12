@@ -1,85 +1,52 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Product Catalog API
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+This project is a backend API built with NestJS to manage a product catalog. It supports functionalities like adding, updating, deleting, viewing products, and provides filtering, sorting, and pagination options.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Project Overview
 
-## Description
+This API offers a RESTful interface for managing products with role-based access control:
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- **Admin** users can create, update, and delete products.
+- **Public** users can view product lists with sorting, filtering, and pagination.
 
-## Project setup
+## Features
 
-```bash
-$ yarn install
-```
+- **Product Management**: Add, update, delete products (Admin only).
+- **Full-Text Search**: Add a search feature on the name or description fields to filter
+  products by keywords.
+- **Product Retrieval**: View products with pagination, sorting by price and creation date, and filtering by category.
+- **Error Handling**: Handles validation errors, missing fields, and incorrect queries.
+- **Authentication**: Basic role-based authentication to secure specific routes.
 
-## Compile and run the project
+## Requirements
 
-```bash
-# development
-$ yarn run start
+- **Framework**: [NestJS](https://nestjs.com/)
+- **Database**: PostgreSQL
+- **Containerization**: Docker and Docker Compose
 
-# watch mode
-$ yarn run start:dev
+## Project Setup
 
-# production mode
-$ yarn run start:prod
-```
+### Prerequisites
 
-## Run tests
+- Docker and Docker Compose should be installed on your system.
 
-```bash
-# unit tests
-$ yarn run test
+### Installation
 
-# e2e tests
-$ yarn run test:e2e
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/rahatHSL/product-catalog.git
+   cd product-catalog
+   ```
+2. **Run Docker Compose**:
 
-# test coverage
-$ yarn run test:cov
-```
+   ```bash
+   docker compose up -d
+   ```
 
-## Resources
+3. **Access the API Endpoint**:
+   - **API**: [http://localhost:3000/products](http://localhost:3000/products) (for admin routes use role: admin in headers) `i.g. POST, PATCH, DELETE`
+   - **Swagger Docs**: [http://localhost:3000/api/docs](http://localhost:3000/api/docs)
 
-Check out a few resources that may come in handy when working with NestJS:
+## Api Documentation
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+Please find the all endpoints in the [Swagger](http://localhost:3000/api/docs) documentation.
