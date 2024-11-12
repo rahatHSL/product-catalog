@@ -30,6 +30,11 @@ export class ProductsController {
     return await this.productsService.find(queryProductDto);
   }
 
+  @Get(':id')
+  async findOne(@Param('id') id: string) {
+    return await this.productsService.findOne(id);
+  }
+
   // admin routes
   @Patch(':id')
   @UseGuards(RoleGuard)

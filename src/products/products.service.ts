@@ -53,6 +53,14 @@ export class ProductsService {
     });
   }
 
+  async findOne(id: string) {
+    const product = await this.ProductRepository.findOneBy({ id: +id });
+    if (!product) {
+      throw new BadRequestException('product not found');
+    }
+    return product;
+  }
+
   async update(id: number, updateProductDto: UpdateProductDto) {
     const product = await this.ProductRepository.findOneBy({ id });
 
