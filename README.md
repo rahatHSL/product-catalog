@@ -28,7 +28,7 @@ This API offers a RESTful interface for managing products with role-based access
 
 ### Prerequisites
 
-- Docker and Docker Compose should be installed on your system.
+- Docker and Docker Compose should be installed on the system.
 
 ### Installation
 
@@ -37,13 +37,19 @@ This API offers a RESTful interface for managing products with role-based access
    git clone https://github.com/rahatHSL/product-catalog.git
    cd product-catalog
    ```
-2. **Run Docker Compose**:
+2. **Rename the `.env.example` file to `.env`**:
 
    ```bash
-   docker compose up -d
+   mv .env.example .env
    ```
 
-3. **Access the API Endpoint**:
+3. **Run Docker Compose**:
+
+   ```bash
+   docker compose up -d --build
+   ```
+
+4. **Access the API Endpoint**:
    - **API**: [http://localhost:3000/products](http://localhost:3000/products) (for admin routes use role: admin in headers) `i.g. POST, PATCH, DELETE`
    - **Swagger Docs**: [http://localhost:3000/api/docs](http://localhost:3000/api/docs)
 
